@@ -131,4 +131,6 @@ function populate_map() {
             add_orgs_to_map(response.data, map);
         }
     });
+
+    return false;
 }
