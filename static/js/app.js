@@ -126,7 +126,7 @@ function populate_map() {
     $.ajax({
         url: ped_query_url,
         type: "GET",
-        headers: { 'Authorization': 'Token ' + iotuk_api_key },
+        headers: { 'Authorization': 'Token ' + pedasi_app_api_key },
         success: function(response) {
             add_orgs_to_map(response.data, map);
         }
