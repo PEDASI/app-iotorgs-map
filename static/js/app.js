@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
 // PEDASI convenience set up
-const PEDASI_API = 'http://pedasi-dev.westeurope.cloudapp.azure.com';
+const PEDASI_API = 'https://pedasi-dev.westeurope.cloudapp.azure.com';
 const DATASET_IOTUK = '/api/datasources/1/data/';
 const DATASET_POSTCODE = '/api/datasources/10/data/';
 
