@@ -20,7 +20,7 @@ function initialise_map() {
     map.fitBounds(uk_bbox);
 
     // Add new TileLayer specifying the interface format to OpenStreetMap
-    let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    let layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
     map.addLayer(layer);
 
     return map;
