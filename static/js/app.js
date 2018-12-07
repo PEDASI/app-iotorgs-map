@@ -46,7 +46,7 @@ function get_geocoords_bounding_box(markers) {
  * @param {Array} results Array of results from IoT UK Nations Database.
  * @returns {Array.<{address_html: String, lat: number, lng: number}>} markers Array of organisation marker objects.
  */
-async function get_orgs_geocoords(results) {
+async function get_orgs_geocoords(results, pedasi_app_api_key) {
     // Hold geocoords and address data for each result to add as a map marker
     let markers = [];
 
@@ -70,6 +70,7 @@ async function get_orgs_geocoords(results) {
         promises.push($.ajax({
             url: postcode_query_url,
             type: "GET",
+            headers: { 'Authorization': 'Token ' + pedasi_app_api_key },
             success: function(response) {
                 // If we have at least one result returned, add the first one
                 markers.push({'address_html': html_addr, 'lat': response.lat, 'lng': response.long});
@@ -96,9 +97,9 @@ async function get_orgs_geocoords(results) {
  * @param {Array} results Array of results from IoT UK Nations Database.
  * @param {Map} map The leaflet map instance.
  */
-async function add_orgs_to_map(results, map) {
+async function add_orgs_to_map(results, map, pedasi_app_api_key) {
     // Get geocoords for organisations
-    let markers = await get_orgs_geocoords(results);
+    let markers = await get_orgs_geocoords(results, pedasi_app_api_key);
 
     // Determine the boundary for all our markers, and restrict map view accordingly,
     // with sufficient padding to ensure all markers are within view
@@ -128,7 +129,7 @@ function populate_map() {
         type: "GET",
         headers: { 'Authorization': 'Token ' + pedasi_app_api_key },
         success: function(response) {
-            add_orgs_to_map(response.data, map);
+            add_orgs_to_map(response.data, map, pedasi_app_api_key);
         }
     });
 
