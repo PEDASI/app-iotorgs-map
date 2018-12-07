@@ -117,6 +117,7 @@ async function add_orgs_to_map(results, map, pedasi_app_api_key) {
 
 /**
  * Update map with Internet of Things organisations for a given location.
+ * @returns {boolean} false Return false to ensure the page doesn't refresh on form submit.
  */
 function populate_map() {
     let city_name = $('#mapParamsCityName').val();
