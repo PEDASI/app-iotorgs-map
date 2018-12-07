@@ -41,17 +41,25 @@
     </div>
 
     <!-- Our input form handled by Javascript -->
-    <div class="container">
+    <div class="container mt-lg-4 mb-lg-3 pt-lg-3 pl-lg-3 border rounded">
       <form name="mapParams">
-        <div class="row pt-lg-4 pb-lg-3">
-          <div class="col">
-            <input type="text" class="form-control" id="mapParamsCityName" placeholder="UK City name" value="Manchester">
+        <div class="row">
+          <div class="col-4">
+            <label for="mapParamsCityName">UK City Name</label>
           </div>
-          <div class="col">
-            <input type="text" class="form-control" id="mapParamsAppKey" placeholder="PEDASI Application Key">
+          <div class="col-4">
+            <label for="mapParamsCityName">PEDASI API Key</label>
           </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary" name="submit" onclick="return populate_map()">Submit</button>
+        </div>
+        <div class="row mb-lg-3">
+          <div class="col-4">
+            <input type="text" class="form-control" id="mapParamsCityName" placeholder="e.g. Manchester, Southampton" value="Manchester">
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" id="mapParamsAppKey" placeholder="i.e. Application or User API Key">
+          </div>
+          <div class="col-1">
+            <button type="submit" class="btn btn-primary" onclick="return populate_map()">Submit</button>
           </div>
         </div>
       </form>
