@@ -65,7 +65,9 @@ async function get_orgs_geocoords(results, pedasi_app_api_key) {
                         org_addr.town + '<br>' + org_addr.postcode + '</p>';
         let query_addr = org_addr.postcode;
 
-        // Perform geocode lookup asynchronously, making note of the promise
+        // Perform geocode lookup asynchronously, making note of the promise, using
+        // the PEDASI Application or User API key. The service doesn't require it,
+        // but as an application it's expected practice to supply it anyway
         postcode_query_url = PEDASI_API + DATASET_POSTCODE + '?postcode=' + query_addr;
         promises.push($.ajax({
             url: postcode_query_url,
@@ -120,7 +122,8 @@ function populate_map() {
     let city_name = $('#mapParamsCityName').val();
     let pedasi_app_api_key = $('#mapParamsAppKey').val();
 
-    // Request IoT company address data from PEDASI for the given location
+    // Request IoT company address data from PEDASI for the given location, using the
+    // provided PEDASI Application or User API key required to authorise the request
     let dataset_url = PEDASI_API + DATASET_IOTUK;
     let ped_query_url = dataset_url + '?town=' + city_name;
 
