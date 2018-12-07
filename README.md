@@ -35,11 +35,13 @@ basic built-in web server, e.g. on Linux/Mac OS:
 $ python3 -m http.server
 ```
 
+By default, this will run the web server on port 8000.
+
 ## Using the Application
 
 Then using a web browser:
 
-* If hosting the application locally, go to [http://localhost:8000].
+* If hosting the application locally on port 8000, go to http://localhost:8000.
 * If accessing the application via GitHub's gh-pages, go to [https://southampton-rsg.github.io/app-iotorgs-map/].
 
 You can then enter a UK city name and your PEDASI Application or User API key, and click submit to
