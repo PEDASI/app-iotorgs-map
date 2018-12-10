@@ -29,21 +29,6 @@ function initialise_map() {
 }
 
 /**
- * Determine the geocoordinate boundaries for all our markers
- * @param {Array.<{address_html: String, lat: number, lng: number}>} markers Array of organisation marker objects.
- * @returns {Array.<float[]>} bbox Leaflet-compatible 2D array of minimum and maximum latitude/longitude coords.
- */
-function get_geocoords_bounding_box(markers) {
-    let minlat = markers.reduce((min, m) => Math.min(min, m.lat), markers[0].lat),
-        maxlat = markers.reduce((max, m) => Math.max(max, m.lat), markers[0].lat);
-    let minlng = markers.reduce((min, m) => Math.min(min, m.lng), markers[0].lng),
-        maxlng = markers.reduce((max, m) => Math.max(max, m.lng), markers[0].lng);
-    let bbox = [[minlat, minlng], [maxlat, maxlng]];
-
-    return bbox;
-}
-
-/**
  * Provide list of addresses and geocoords from list of IoT UK Nations organisations.
  * @param {Array} results Array of results from IoT UK Nations Database.
  * @returns {Array.<{address_html: String, lat: number, lng: number}>} markers Array of organisation marker objects.
@@ -105,16 +90,16 @@ async function add_orgs_to_map(results, map, pedasi_app_api_key) {
     // Get geocoords for organisations
     let markers = await get_orgs_geocoords(results, pedasi_app_api_key);
 
-    // Determine the boundary for all our markers, and restrict map view accordingly,
-    // with sufficient padding to ensure all markers are within view
-    let bbox = get_geocoords_bounding_box(markers);
-    map.fitBounds(bbox, {padding: [15, 15]});
-
-    // Add each of the markers to the map, each with an address displayed when clicked
+    // Add each marker to a feature group on our map, with an address displayed when clicked
+    let l_group = L.featureGroup().addTo(map);
     for(let marker_num in markers) {
         let marker = markers[marker_num];
-        L.marker([marker.lat, marker.lng]).bindPopup(marker.address_html).addTo(map);
+        let l_marker = L.marker([marker.lat, marker.lng]).bindPopup(marker.address_html);
+        l_group.addLayer(l_marker);
     }
+
+    // Determine the boundary for all our markers, and restrict map view accordingly,
+    map.fitBounds(l_group.getBounds());
 }
 
 /**
