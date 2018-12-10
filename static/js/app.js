@@ -1,6 +1,8 @@
+/*jslint es6 */
 /*jshint esversion: 6 */
 
-// PEDASI convenience set up
+"use strict";
+
 const PEDASI_API = 'https://pedasi-dev.westeurope.cloudapp.azure.com';
 const DATASET_IOTUK = '/api/datasources/1/data/';
 const DATASET_POSTCODE = '/api/datasources/10/data/';
@@ -68,7 +70,7 @@ async function get_orgs_geocoords(results, pedasi_app_api_key) {
         // Perform geocode lookup asynchronously, making note of the promise, using
         // the PEDASI Application or User API key. The service doesn't require it,
         // but as an application it's expected practice to supply it anyway
-        postcode_query_url = PEDASI_API + DATASET_POSTCODE + '?postcode=' + query_addr;
+        let postcode_query_url = PEDASI_API + DATASET_POSTCODE + '?postcode=' + query_addr;
         promises.push($.ajax({
             url: postcode_query_url,
             type: "GET",
