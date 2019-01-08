@@ -3,9 +3,10 @@
 
 "use strict";
 
-const PEDASI_API = 'https://pedasi-dev.westeurope.cloudapp.azure.com';
-const DATASET_IOTUK = '/api/datasources/1/data/';
-const DATASET_POSTCODE = '/api/datasources/10/data/';
+// PEDASI API endpoints
+const PEDASI_API = 'https://dev.iotobservatory.io';  // Root PEDASI API endpoint
+const DATASET_IOTUK = '/api/datasources/2/data/';    // IoT UK Nations Database external data source
+const DATASET_POSTCODE = '/api/datasources/1/data/'; // PEDASI's internal geolocation lookup data source
 
 
 let map = initialise_map();
