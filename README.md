@@ -50,3 +50,5 @@ Things displayed on a map. Clicking on a pin marker will display the name of the
 its address in a popup.
 
 ## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
