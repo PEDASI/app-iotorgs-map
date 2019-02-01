@@ -42,7 +42,7 @@ By default, this will run the web server on port 8000.
 Then using a web browser:
 
 * If hosting the application locally on port 8000, go to http://localhost:8000.
-* If accessing the application via GitHub's gh-pages, go to https://southampton-rsg.github.io/app-iotorgs-map/.
+* If accessing the application via GitHub's gh-pages, go to https://pedasi.github.io/app-iotorgs-map/.
 
 You can then enter a UK city name and your PEDASI Application or User API key, and click submit to
 see the locations of organisations and businesses in that area associated with the to Internet of
