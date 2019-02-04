@@ -1,6 +1,3 @@
-/*jslint es6 */
-/*jshint esversion: 6 */
-
 "use strict";
 
 // PEDASI API endpoints
